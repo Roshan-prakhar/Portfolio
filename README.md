@@ -58,20 +58,18 @@ Or manually:
 ./mvnw clean package -DskipTests
 ```
 
-## Deployment on Render
+## Deployment Options
 
-This project is configured for easy deployment on Render.com.
+This project supports multiple deployment methods:
 
-### Deployment Options
+### 1. Render.com Deployment (Recommended)
 
-#### Option 1: Using render.yaml (Recommended)
-
+#### Option A: Using render.yaml (Automatic)
 1. Push your code to a Git repository (GitHub, GitLab, or Bitbucket)
 2. Connect your repository to Render
 3. Render will automatically detect the `render.yaml` file and deploy your application
 
-#### Option 2: Manual Configuration
-
+#### Option B: Manual Configuration
 1. Create a new Web Service on Render
 2. Connect your Git repository
 3. Use these settings:
@@ -80,26 +78,62 @@ This project is configured for easy deployment on Render.com.
    - **Environment**: Java
    - **Plan**: Free
 
+### 2. Docker Deployment
+
+#### Quick Start with Docker
+```bash
+# Build the image
+docker build -t personal-portfolio .
+
+# Run the container
+docker run -p 5000:5000 personal-portfolio
+```
+
+#### Using Docker Compose (Recommended)
+```bash
+# Start the application
+docker-compose up -d
+
+# View logs
+docker-compose logs -f
+
+# Stop the application
+docker-compose down
+```
+
+#### Using Build Scripts
+**Linux/Mac:**
+```bash
+# Build and run
+./docker-build.sh
+./docker-run.sh
+```
+
+**Windows:**
+```cmd
+# Build and run
+docker-build.bat
+docker-run.bat
+```
+
+### 3. Traditional Server Deployment
+
+1. Build the JAR file:
+   ```bash
+   ./mvnw clean package -DskipTests
+   ```
+
+2. Run on server:
+   ```bash
+   java -jar target/portfolio.jar
+   ```
+
 ### Environment Variables
 
 The application uses the following environment variables:
 
 - `PORT`: Server port (default: 5000)
 - `JAVA_OPTS`: JVM options (default: -Xmx512m -Xms256m)
-
-### Docker Deployment
-
-You can also deploy using Docker:
-
-1. Build the Docker image:
-   ```bash
-   docker build -t personal-portfolio .
-   ```
-
-2. Run the container:
-   ```bash
-   docker run -p 5000:5000 personal-portfolio
-   ```
 
 ## Project Structure
 

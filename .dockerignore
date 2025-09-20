@@ -17,3 +17,8 @@ target/
 .gitignore
 README.md
 HELP.md
+DEPLOYMENT.md
+docker-compose.yml
+docker-build.*
+docker-run.*
+build.*
