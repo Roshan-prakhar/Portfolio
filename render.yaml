@@ -4,11 +4,11 @@ services:
     env: java
     plan: free
     buildCommand: ./mvnw clean package -DskipTests
-    startCommand: java -jar target/portfolio.jar
+startCommand: java -jar target/*.jar
     envVars:
       - key: PORT
         value: 5000
       - key: JAVA_OPTS
         value: -Xmx512m -Xms256m
-    healthCheckPath: /
+healthCheckPath: /actuator/health
     autoDeploy: true
